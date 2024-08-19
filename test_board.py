@@ -9,15 +9,15 @@ class TestBoard(unittest.TestCase):
 
         # Testing the black rooks' initial positions
         self.assertIsInstance(board.get_piece(0, 0), Rook)      #assertIsInstance checks if the object is an instance of the 'rook' class
-        self.assertEqual(board.get_piece(0, 0).color, "BLACK")  #asserEqual checks that the rook in this specific position is the correct color
+        self.assertEqual(board.get_piece(0, 0).__color__, "BLACK")  #asserEqual checks that the rook in this specific position is the correct color
         self.assertIsInstance(board.get_piece(0, 7), Rook)
-        self.assertEqual(board.get_piece(0, 7).color, "BLACK")
+        self.assertEqual(board.get_piece(0, 7).__color__, "BLACK")
         
         # Testing the white rooks' initial positions
         self.assertIsInstance(board.get_piece(7, 0), Rook)
-        self.assertEqual(board.get_piece(7, 0).color, "WHITE")
+        self.assertEqual(board.get_piece(7, 0).__color__, "WHITE")
         self.assertIsInstance(board.get_piece(7, 7), Rook)
-        self.assertEqual(board.get_piece(7, 7).color, "WHITE")
+        self.assertEqual(board.get_piece(7, 7).__color__, "WHITE")
 
         # Testing that the remaining board positions are empty (None)
         for row in range(8):
