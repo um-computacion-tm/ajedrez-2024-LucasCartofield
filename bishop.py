@@ -1,10 +1,10 @@
 from piece import Piece
 
 
-class Rook(Piece):
+class Bishop(Piece):
 
     def get_unicode_symbol(self):
         if self.__color__ == "WHITE":
-            return "♖"  # white rook symbol
+            return "♗"  # white bishop symbol
         elif self.__color__ == "BLACK":
-            return "♜"  # black rook symbol
+            return "♝"  # black bishop symbol
