@@ -14,5 +14,13 @@ class Board:
         self.__positions__[7][7] = Rook("WHITE") # White
         self.__positions__[7][0] = Rook("WHITE") # White
 
-    def get_piece(self, row, col):
-        return self.__positions__[row][col]
+    def show_board(self):
+        board_piece = ""
+        for row in self.__positions__:
+            for piece in row:
+                if piece is None:
+                    board_piece += ". "  # for empty spaces
+                else:
+                    board_piece += piece.get_unicode_symbol() + " "
+            board_piece += "\n"
+        return board_piece
