@@ -16,6 +16,11 @@ class Chess:
         # validate coords
         piece = self.__board__.get_piece(from_row, from_col)
         self.change_turn()
+
+    def show_board(self):
+        board_piece = self.__board__.show_board()
+        return board_piece
+    
     @property
     def turn(self):
         return self.__turn__
