@@ -14,6 +14,12 @@ class Chess:
         to_col,
     ):
         # validate coords
+        if piece is None:
+            raise ValueError("There is no piece in that position")
+        if piece.color != self.__turn__:
+            raise ValueError("It's not your turn yet")
+        
+
         piece = self.__board__.get_piece(from_row, from_col)
         self.change_turn()
 
