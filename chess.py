@@ -6,21 +6,25 @@ class Chess:
         self.__board__ = Board()
         self.__turn__ = "WHITE"
 
-    def move(
-        self,
+    def move(self,
         from_row,
         from_col,
         to_row,
         to_col,
     ):
+        piece = self.__board__.get_piece(from_row, from_col)        
         # validate coords
         if piece is None:
             raise ValueError("There is no piece in that position")
-        if piece.color != self.__turn__:
+        if piece.__color__ != self.__turn__:
             raise ValueError("It's not your turn yet")
-        
+        self.change_turn()
 
-        piece = self.__board__.get_piece(from_row, from_col)
+        #move the piece
+        self.__board__.set_piece(to_row, to_col, piece)
+        self.__board__.set_piece(from_row, from_col, None)
+
+        #change player turn
         self.change_turn()
 
     def show_board(self):
