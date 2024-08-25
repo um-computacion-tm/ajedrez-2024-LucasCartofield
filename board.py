@@ -46,6 +46,12 @@ class Board:
         self.__positions__[6][6] = Pawn("WHITE") # White
         self.__positions__[6][7] = Pawn("WHITE") # White
 
+    def get_piece(self, row, col):
+        return self.__positions__[row][col]
+
+    def set_piece(self, row, col, piece):
+        self.__positions__[row][col] = piece
+
     def show_board(self):
         board_piece = ""
         for row in self.__positions__:
@@ -56,3 +62,4 @@ class Board:
                     board_piece += piece.get_unicode_symbol() + " "
             board_piece += "\n"
         return board_piece
+    

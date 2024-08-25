@@ -27,6 +27,13 @@ class Chess:
         #change player turn
         self.change_turn()
 
+        #check if the final place has a piece of the same color as the player
+        destination = self.__board__.get_piece(to_row, to_col)
+        ...
+
+        #check if the move is legal (within bounds)
+        ...
+
     def show_board(self):
         board_piece = self.__board__.show_board()
         return board_piece
