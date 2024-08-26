@@ -32,7 +32,8 @@ class Chess:
         ...
 
         #check if the move is legal (within bounds)
-        ...
+        if not (0 <= from_row < 8 and 0 <= from_col < 8 and 0 <= to_row < 8 and 0 <= to_col < 8):
+            raise ValueError("Move is out of bounds")
 
     def show_board(self):
         board_piece = self.__board__.show_board()
