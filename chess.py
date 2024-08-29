@@ -6,6 +6,9 @@ class Chess:
         self.__board__ = Board()
         self.__turn__ = "WHITE"
 
+    def is_playing(self):
+        return True
+
     def move(self,
         from_row,
         from_col,

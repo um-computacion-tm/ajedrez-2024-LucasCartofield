@@ -1,6 +1,7 @@
 class Piece:
-    def __init__(self, color):
+    def __init__(self, color, board):
         self.__color__ = color
+        self.__board__ = board
         
     def get_color(self):
         return self.__color__
