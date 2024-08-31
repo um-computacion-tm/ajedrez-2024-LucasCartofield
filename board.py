@@ -13,38 +13,22 @@ class Board:
             for _ in range(8):
                 col.append(None)
             self.__positions__.append(col)
-        self.__positions__[0][0] = Rook("BLACK", self) # Black
-        self.__positions__[0][7] = Rook("BLACK", self) # Black
-        self.__positions__[7][7] = Rook("WHITE", self) # White
-        self.__positions__[7][0] = Rook("WHITE", self) # White
-        self.__positions__[0][1] = Knight("BLACK", self) # Black
-        self.__positions__[0][6] = Knight("BLACK", self) # Black
-        self.__positions__[7][1] = Knight("WHITE", self) # White
-        self.__positions__[7][6] = Knight("WHITE", self) # White
-        self.__positions__[0][2] = Bishop("BLACK", self) # Black
-        self.__positions__[0][5] = Bishop("BLACK", self) # Black
-        self.__positions__[7][5] = Bishop("WHITE", self) # White
-        self.__positions__[7][2] = Bishop("WHITE", self) # White
-        self.__positions__[0][3] = King("BLACK", self) # Black
-        self.__positions__[7][3] = King("WHITE", self) # White        
-        self.__positions__[0][4] = Queen("BLACK", self) # Black
-        self.__positions__[7][4] = Queen("WHITE", self) # White
-        self.__positions__[1][0] = Pawn("BLACK", self) # Black
-        self.__positions__[1][1] = Pawn("BLACK", self) # Black
-        self.__positions__[1][2] = Pawn("BLACK", self) # White
-        self.__positions__[1][3] = Pawn("BLACK", self) # White
-        self.__positions__[1][4] = Pawn("BLACK", self) # Black
-        self.__positions__[1][5] = Pawn("BLACK", self) # Black
-        self.__positions__[1][6] = Pawn("BLACK", self) # White
-        self.__positions__[1][7] = Pawn("BLACK", self) # White
-        self.__positions__[6][0] = Pawn("WHITE", self) # Black
-        self.__positions__[6][1] = Pawn("WHITE", self) # Black
-        self.__positions__[6][2] = Pawn("WHITE", self) # White
-        self.__positions__[6][3] = Pawn("WHITE", self) # White
-        self.__positions__[6][4] = Pawn("WHITE", self) # Black
-        self.__positions__[6][5] = Pawn("WHITE", self) # Black
-        self.__positions__[6][6] = Pawn("WHITE", self) # White
-        self.__positions__[6][7] = Pawn("WHITE", self) # White
+
+        starting_place = {
+            Rook: [("BLACK", [(0, 0), (0, 7)]), ("WHITE", [(7, 0), (7, 7)])],
+            Knight: [("BLACK", [(0, 1), (0, 6)]), ("WHITE", [(7, 1), (7, 6)])],
+            Bishop: [("BLACK", [(0, 2), (0, 5)]), ("WHITE", [(7, 2), (7, 5)])],
+            King: [("BLACK", [(0, 3)]), ("WHITE", [(7, 3)])],
+            Queen: [("BLACK", [(0, 4)]), ("WHITE", [(7, 4)])],
+            Pawn: [("BLACK", [(1, i) for i in range(8)]), ("WHITE", [(6, i) for i in range(8)])],
+        }
+
+        for piece, color_positions in starting_place.items():
+            for color, positions in color_positions:
+                for position in positions:
+                    row, col = position
+                    self.__positions__[row][col] = piece(color, self)
+
 
     def get_piece(self, row, col):
         return self.__positions__[row][col]
