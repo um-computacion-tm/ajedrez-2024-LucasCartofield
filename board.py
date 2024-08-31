@@ -14,22 +14,6 @@ class Board:
                 col.append(None)
             self.__positions__.append(col)
 
-from rook import Rook
-from knight import Knight
-from bishop import Bishop
-from king import King
-from queen import Queen
-from pawn import Pawn
-
-class Board:
-    def __init__(self):
-        self.__positions__ = []
-        for _ in range(8):
-            col = []
-            for _ in range(8):
-                col.append(None)
-            self.__positions__.append(col)
-
         starting_place = {
             Rook: [("BLACK", [(0, 0), (0, 7)]), ("WHITE", [(7, 0), (7, 7)])],
             Knight: [("BLACK", [(0, 1), (0, 6)]), ("WHITE", [(7, 1), (7, 6)])],
@@ -45,6 +29,10 @@ class Board:
                     row, col = position
                     self.__positions__[row][col] = piece(color, self)
 
+    def clear_board(self): #clears the board by setting all positions to None
+        for row in range(8):
+            for col in range(8):
+                self.__positions__[row][col] = None
 
     def get_piece(self, row, col):
         return self.__positions__[row][col]
