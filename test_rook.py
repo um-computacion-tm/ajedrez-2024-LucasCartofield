@@ -15,7 +15,11 @@ class TestRook(unittest.TestCase):
 
     def test_move_vertical_desc(self):
         board = Board()
+        board.clear_board()  #clear the board
+
         rook = Rook("WHITE", board)
+        board.set_piece(4, 1, rook)
+        
         possibles = rook.possible_positions_vd(4, 1)
         self.assertEqual(
             possibles,
@@ -24,7 +28,11 @@ class TestRook(unittest.TestCase):
 
     def test_move_vertical_asc(self):
         board = Board()
+        board.clear_board() 
+
         rook = Rook("WHITE", board)
+        board.set_piece(4, 1, rook) #sets the rook at the coordinates (4, 1)
+
         possibles = rook.possible_positions_va(4, 1)
         self.assertEqual(
             possibles,
