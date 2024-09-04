@@ -1,9 +1,11 @@
 from chess import Chess
+from exceptions import InvalidMove, InvalidTurn, EmptyPosition
 
 def main():
     chess = Chess()
     while chess.is_playing():
         play(chess)
+
 
 def play(chess):
     try:
@@ -20,6 +22,8 @@ def play(chess):
             to_row,
             to_col,
         )
+    except InvalidMove as e:
+        print(e)
     except Exception as e:
         print("error", e)
 
