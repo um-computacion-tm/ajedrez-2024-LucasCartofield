@@ -1,5 +1,5 @@
 from board import Board
-
+from exceptions import InvalidMove, InvalidTurn, EmptyPosition
 
 class Chess:
     def __init__(self):
@@ -15,20 +15,17 @@ class Chess:
         to_row,
         to_col,
     ):
-        piece = self.__board__.get_piece(from_row, from_col)        
         # validate coords
-        if piece is None:
-            raise ValueError("There is no piece in that position")
-        if piece.__color__ != self.__turn__:
-            raise ValueError("It's not your turn yet")
+        piece = self.__board__.get_piece(from_row, from_col)
+        if not piece:
+            raise EmptyPosition()
+        if not piece.get_color() == self.__turn__:
+            raise InvalidTurn()
+        if not piece.valid_positions(from_row, from_col, to_row, to_col):
+            raise InvalidMove()
+        self.__board__.move(from_row, from_col, to_row, to_col)
         self.change_turn()
 
-        #move the piece
-        self.__board__.set_piece(to_row, to_col, piece)
-        self.__board__.set_piece(from_row, from_col, None)
-
-        #change player turn
-        self.change_turn()
 
         #check if the final place has a piece of the same color as the player
         destination = self.__board__.get_piece(to_row, to_col)
@@ -40,8 +37,7 @@ class Chess:
             raise ValueError("Move is out of bounds")
 
     def show_board(self):
-        board_piece = self.__board__.show_board()
-        return board_piece
+        return str(self.__board__)
     
     @property
     def turn(self):
@@ -52,4 +48,3 @@ class Chess:
             self.__turn__ = "BLACK"
         else:
             self.__turn__ = "WHITE"
-

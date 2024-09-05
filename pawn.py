@@ -18,4 +18,10 @@ class Pawn(Piece):
         if self.__board__.is_empty(next_row, col):
             possibles.append((next_row, col))
 
-        ...
+        #double forward movement on first turn
+            if (self.get_color() == "white" and row == 1) or (self.get_color() == "black" and row == 6):
+                double_row = row + 2 * direction
+                if self.__board__.is_empty(double_row, col):
+                    possibles.append((double_row, col))  
+                    
+            ...

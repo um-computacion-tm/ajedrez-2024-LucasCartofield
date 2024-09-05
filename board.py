@@ -33,10 +33,16 @@ class Board:
                         row, col = position
                         self.__positions__[row][col] = piece(color, self)
 
-    def clear_board(self): #clears the board by setting all positions to None
-        for row in range(8):
-            for col in range(8):
-                self.__positions__[row][col] = None
+    def __str__(self):
+        board_str = ""
+        for row in self.__positions__:
+            for piece in row:
+                if piece is None:
+                    board_str += ". "  # for empty spaces
+                else:
+                    board_str += piece.__str__() + " "
+            board_str += "\n"
+        return board_str
 
     def get_piece(self, row, col):
         if not (
@@ -47,17 +53,6 @@ class Board:
 
     def set_piece(self, row, col, piece):
         self.__positions__[row][col] = piece
-
-    def show_board(self):
-        board_piece = ""
-        for row in self.__positions__:
-            for piece in row:
-                if piece is None:
-                    board_piece += ". "  # for empty spaces
-                else:
-                    board_piece += piece.__str__() + " "
-            board_piece += "\n"
-        return board_piece
     
     def move(self, from_row, from_col, to_row, to_col):
         origin = self.get_piece(from_row, from_col)
