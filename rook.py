@@ -19,7 +19,12 @@ class Rook(Piece):
             next_positions = [(next_row, col) for next_row in range(row + 1, 8)]
         elif direction == 'vertical_up':
             next_positions = [(next_row, col) for next_row in range(row - 1, -1, -1)]
-        ...
+        elif direction == 'horizontal_right':
+            next_positions = [(row, next_col) for next_col in range(col + 1, 8)]
+        elif direction == 'horizontal_left':
+            next_positions = [(row, next_col) for next_col in range(col - 1, -1, -1)]
+        else:
+            return possibles
 
     #def valid_positions(self, from_row, from_col, to_row, to_col):
         #possible_positions = (

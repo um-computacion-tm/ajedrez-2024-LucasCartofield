@@ -24,4 +24,10 @@ class Pawn(Piece):
                 if self.__board__.is_empty(double_row, col):
                     possibles.append((double_row, col))  
                     
-            ...
+        # Capture
+        for next_col in [col - 1, col + 1]:
+            if 0 <= next_col < 8:
+                other_piece = self.__board__.get_piece(next_row, next_col)
+                if other_piece is not None and other_piece.get_color() != self.get_color():
+                    possibles.append((next_row, next_col))
+        return possibles
