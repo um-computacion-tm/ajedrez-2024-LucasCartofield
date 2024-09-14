@@ -16,7 +16,7 @@ class Board:
             for _ in range(8):
                 col.append(None)
             self.__positions__.append(col)
-
+            
         if not for_test:
             starting_place = {
                 Rook: [("BLACK", [(0, 0), (0, 7)]), ("WHITE", [(7, 0), (7, 7)])],
