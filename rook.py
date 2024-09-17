@@ -4,7 +4,14 @@ class Rook(Piece):
     white_str = "♜"
     black_str = "♖"
 
-    def valid_positions(self, from_row, from_col, to_row, to_col):
+    def get_possible_positions(self, from_row, from_col):
+        possibles = self.possible_orthogonal_positions(
+            from_row,
+            from_col,
+        )
+
+
+    '''def valid_positions(self, from_row, from_col, to_row, to_col):
         possible_positions = (
             self.possible_positions(from_row, from_col, direction='vertical_down') +
             self.possible_positions(from_row, from_col, direction='vertical_up') +
@@ -34,4 +41,4 @@ class Rook(Piece):
                 break
             possibles.append((next_row, next_col))
 
-        return possibles
+        return possibles'''
